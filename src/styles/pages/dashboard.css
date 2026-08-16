@@ -1,0 +1,534 @@
+/* import font Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Variabel warna sesuai style guide */
+:root {
+    --primary: #53629E;   /* Biru Sidebar */
+    --secondary: #A18D6D; /* Cokelat Emas (Tombol Aksi) */
+    --accent: #D6F4ED;    /* Hijau Mint Pucat */
+    --text: #1E1E1E;      /* Hitam Teks */
+    --danger: #C93535;    /* Merah Error/Hapus */
+    --bg-body: #F5F7FA;   /* Background Abu Terang */
+    --white: #FFFFFF;
+}
+
+/* --- 3. RESET & BASE --- */
+* { box-sizing: border-box; font-family: 'Inter', sans-serif; } /* Pakai Font Inter */
+
+body { 
+    margin: 0; padding: 0; 
+    background-color: var(--bg-body); 
+    color: var(--text); 
+}
+
+/* LAYOUT */
+.app-container { display: flex; min-height: 100vh; }
+
+/* --- SIDEBAR (PRIMARY COLOR) --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--primary); /* #53629E */
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    position: fixed;
+    height: 100vh;
+    left: 0; top: 0;
+    z-index: 10;
+}
+
+/* Profil di Sidebar */
+.profile-box { text-align: center; margin-bottom: 35px; }
+.profile-img { 
+    width: 80px; height: 80px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 3px solid rgba(255,255,255,0.2); 
+    margin-bottom: 12px; 
+}
+.profile-name { font-size: 16px; font-weight: 700; margin: 0; color: var(--white); }
+.profile-email { font-size: 12px; opacity: 0.8; margin: 4px 0 0; font-weight: 400; }
+
+/* Navigasi */
+.nav-menu { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+
+.nav-item {
+    display: flex; align-items: center; padding: 12px 16px;
+    text-decoration: none; color: rgba(255,255,255,0.85);
+    border-radius: 8px; font-size: 14px; font-weight: 500;
+    transition: all 0.2s;
+}
+
+.nav-item:hover { 
+    background: rgba(255,255,255,0.1); 
+    color: var(--white); 
+}
+
+/* Menu Aktif (Background Putih/Accent, Teks Primary) */
+.nav-item.active {
+    background: var(--white); 
+    color: var(--primary); /* Teks jadi warna Sidebar */
+    font-weight: 700; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav-item .icon { margin-right: 12px; font-size: 18px; width: 20px; text-align: center; }
+
+/* Footer Sidebar */
+.sidebar-footer { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); }
+.logout-btn:hover { background: var(--danger); color: var(--white); }
+
+/* --- MAIN WRAPPER --- */
+.main-wrapper { flex: 1; margin-left: 260px; display: flex; flex-direction: column; }
+
+/* --- HEADER (WHITE) --- */
+.top-header {
+    height: 80px; background: var(--white); 
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; 
+    /* Shadow halus di bawah header */
+    box-shadow: 0 1px 0 #E5E7EB; 
+    position: sticky; top: 0; z-index: 5;
+}
+
+.brand-logo { font-size: 24px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
+.brand-logo span { color: var(--secondary); } /* Aksen emas pada logo */
+
+.header-right { display: flex; align-items: center; gap: 24px; }
+
+.search-bar { display: flex; background: var(--bg-body); padding: 10px 16px; border-radius: 8px; width: 320px; }
+.search-bar input { border: none; background: transparent; outline: none; flex: 1; font-size: 14px; color: var(--text); }
+.search-bar button { border: none; background: transparent; cursor: pointer; color: #888; }
+
+.header-icons { display: flex; gap: 12px; }
+.icon-btn { 
+    width: 40px; height: 40px; border-radius: 8px; border: none; 
+    background: var(--secondary); /* Warna emas */
+    color: var(--white); 
+    cursor: pointer; display: flex; align-items: center; justify-content: center; 
+    font-size: 16px;
+}
+.icon-btn:hover { opacity: 0.9; }
+
+.header-date { text-align: right; font-size: 12px; color: #666; }
+.header-date strong { display: block; font-size: 14px; color: var(--text); }
+
+/* --- CONTENT AREA --- */
+.content-area { padding: 40px; }
+
+/* --- WIDGET CARDS --- */
+.widget-card { 
+    background: var(--white); 
+    border-radius: 16px; /* Rounded Style */
+    padding: 24px; 
+    border: 1px solid #E2E8F0; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); 
+}
+.widget-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.widget-title { font-size: 18px; font-weight: 700; color: var(--text); }
+
+/* Grid System */
+.dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
+.full-column { grid-column: 1 / -1; }
+
+/* --- FORMS & INPUTS --- */
+.form-label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 8px; color: var(--text); }
+.form-input { 
+    width: 100%; padding: 12px 16px; 
+    border: 1px solid #CBD5E0; 
+    border-radius: 8px; /* Rounded Input */
+    font-size: 14px; color: var(--text);
+    background: #FAFAFA;
+}
+.form-input:focus { border-color: var(--primary); outline: none; background: var(--white); }
+
+/* --- BUTTONS (SESUAI STYLE GUIDE) --- */
+.btn { 
+    padding: 12px 24px; border-radius: 8px; font-weight: 600; 
+    cursor: pointer; border: none; font-size: 14px; transition: 0.2s;
+}
+
+/* Tombol Utama (Pakai Warna SECONDARY #A18D6D sesuai gambar 'Perbarui Info') */
+.btn--primary { background: var(--secondary); color: var(--white); }
+.btn--primary:hover { background: #8e7c5e; }
+
+/* Tombol Outline (Putih border) */
+.btn--outline { background: var(--white); border: 1px solid #CBD5E0; color: var(--text); }
+.btn--outline:hover { background: #F7FAFC; }
+
+/* Tombol Danger (#C93535) */
+.btn--danger { background: var(--danger); color: var(--white); }
+.btn--danger:hover { background: #b02a2a; }
+
+/* --- TASK LIST ITEMS --- */
+.task-item { 
+    display: flex; justify-content: space-between; align-items: flex-start; 
+    padding: 20px; 
+    border: 1px solid #EDF2F7; border-radius: 12px; margin-bottom: 16px; 
+    background: var(--white);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.task-info h4 { margin: 0 0 4px 0; font-size: 16px; font-weight: 600; }
+.task-desc { color: #718096; font-size: 13px; margin: 0 0 12px 0; }
+
+/* Badges */
+.badge { padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge { background: var(--accent); color: #00796B; } /* Pakai warna Accent #D6F4ED */
+.badge-priority-high { background: #FED7D7; color: var(--danger); } 
+
+/* Action Buttons (Bulat) */
+.task-actions { display: flex; gap: 8px; }
+.btn-icon { 
+    width: 36px; height: 36px; border-radius: 8px; 
+    border: none; cursor: pointer; 
+    display: flex; align-items: center; justify-content: center; 
+    transition: 0.2s; background: #EDF2F7; color: #4A5568;
+}
+.btn-icon:hover { background: #E2E8F0; color: var(--text); }
+
+/* --- CHART STYLE (PERSIS REFERENSI) --- */
+
+.chart-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 33%;
+}
+
+/* Wadah Lingkaran */
+.donut-wrapper {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Lingkaran Grafik */
+.donut-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* Gradient ini akan di-update oleh JS */
+    background: conic-gradient(#eee 0% 100%); 
+    
+    /* TEKNIK MASKING: Membuat bolong di tengah */
+    -webkit-mask: radial-gradient(transparent 58%, black 60%);
+    mask: radial-gradient(transparent 58%, black 60%);
+}
+
+/* Teks Persen di Tengah */
+.donut-text {
+    position: relative;
+    z-index: 2;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+}
+
+/* Label di Bawah */
+.chart-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #111;
+    display: flex;
+    align-items: center; 
+    gap: 6px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Dot Warna */
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* [BARU] Agar input tanggal terlihat bisa diklik */
+input[type="date"] {
+    cursor: pointer;
+    position: relative;
+}
+
+/* Opsional: Membuat area ikon kalender memenuhi kotak (CSS Trick) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+/* Responsif untuk Halaman Tambah Tugas */
+@media (max-width: 768px) {
+    /* Di HP, ubah grid 2 kolom jadi 1 kolom (atas-bawah) */
+    .dashboard-grid .full-column > .widget-card form > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* --- RESPONSIVE MOBILE (Layart HP) --- */
+@media (max-width: 768px) {
+    
+    /* 1. Ubah Grid Dashboard jadi 1 Kolom */
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Tumpuk ke bawah */
+        gap: 20px;
+    }
+
+    /* 2. Ubah Kartu Tugas Jadi Vertikal (Atas-Bawah) */
+    .task-item {
+        flex-direction: column-reverse; /* Gambar di Atas, Teks di Bawah */
+        align-items: flex-start !important;
+        padding: 15px !important;
+    }
+
+    /* 3. Atur Container Gambar di HP */
+    .task-item > div:last-child { 
+        width: 100%;
+        margin-left: 0 !important;
+        margin-bottom: 15px; /* Jarak antara foto dan teks */
+    }
+
+    /* 4. Atur Gambar Jadi Banner Lebar */
+    .task-item img {
+        width: 100% !important; /* Full Lebar HP */
+        height: 160px !important; /* Tinggi Banner */
+        object-fit: cover;
+    }
+
+    /* 5. Perbesar Tombol Aksi biar gampang dipencet jempol */
+    .task-actions button {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 20px !important;
+    }
+
+    /* 6. Penyesuaian Layout Utama (Biar gak kepotong sidebar) */
+    .sidebar {
+        width: 70px; /* Perkecil sidebar jadi ikon doang */
+        padding: 10px;
+    }
+    .sidebar .profile-box, 
+    .sidebar-header h3, 
+    .sidebar-header p,
+    .nav-item span:not(.icon), 
+    .brand-logo,
+    .sidebar-footer span:not(.icon) {
+        display: none; /* Sembunyikan teks di sidebar */
+    }
+    .main-wrapper {
+        margin-left: 70px; /* Geser konten utama menyesuaikan sidebar kecil */
+    }
+    .nav-item {
+        justify-content: center;
+        padding: 15px 5px;
+    }
+    .nav-item .icon {
+        margin-right: 0;
+        font-size: 24px;
+    }
+}
+
+/* --- DARK MODE VARIABLES & OVERRIDES --- */
+[data-theme="dark"] body { background-color: #121212 !important; color: #E0E0E0 !important; }
+
+[data-theme="dark"] .main-wrapper { background-color: #121212; }
+
+/* Ubah Kartu & Header jadi Gelap */
+[data-theme="dark"] .widget-card,
+[data-theme="dark"] .top-header,
+[data-theme="dark"] .task-item, 
+[data-theme="dark"] .sidebar, /* Sidebar ikut menggelap sedikit agar elegan */
+[data-theme="dark"] .modal-box { 
+    background-color: #1E1E1E !important; 
+    border-color: #333 !important;
+    color: #E0E0E0 !important;
+}
+
+/* Judul & Teks di Mode Gelap */
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, [data-theme="dark"] h4, 
+[data-theme="dark"] .widget-title, 
+[data-theme="dark"] .brand-logo { 
+    color: #FFFFFF !important; 
+}
+[data-theme="dark"] p, [data-theme="dark"] small, [data-theme="dark"] span { color: #B0B0B0; }
+[data-theme="dark"] .brand-logo span { color: #A18D6D; } /* Tetap Emas */
+
+/* Input Form Gelap */
+[data-theme="dark"] .form-input, 
+[data-theme="dark"] .search-bar, 
+[data-theme="dark"] #sortSelect {
+    background-color: #2D2D2D !important;
+    border-color: #444 !important;
+    color: #FFF !important;
+}
+
+/* Tombol-tombol di Mode Gelap */
+[data-theme="dark"] .icon-btn { background-color: #2D2D2D; color: #FFF; }
+[data-theme="dark"] .btn--outline { background-color: transparent; border-color: #555; color: #FFF; }
+[data-theme="dark"] .nav-item.active { background-color: #333; color: #FFF; }
+
+/* Chart Ring di Mode Gelap */
+[data-theme="dark"] .donut-text { color: #FFF !important; }
+
+
+/* --- DESAIN TOMBOL TOGGLE SWITCH (ON/OFF) --- */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 4px; bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* Warna saat ON (Biru/Emas) */
+input:checked + .slider { background-color: #A18D6D; }
+input:checked + .slider:before { transform: translateX(24px); }
+
+/* --- FIX DARK MODE UNTUK POPUP/MODAL --- */
+
+/* 1. Paksa Header & Body Modal jadi Gelap */
+[data-theme="dark"] .modal-box > div {
+    background-color: #1E1E1E !important; 
+    border-color: #333 !important;
+}
+
+/* 2. Judul & Tombol Close (X) jadi Putih */
+[data-theme="dark"] .modal-box h3,
+[data-theme="dark"] .modal-box h2,
+[data-theme="dark"] #closeDetailModal,
+[data-theme="dark"] #closeEditModal {
+    color: #FFFFFF !important;
+}
+
+/* 3. Kotak Deskripsi (Biar gak silau) */
+[data-theme="dark"] #detailDesc {
+    background-color: #2D2D2D !important; /* Abu Gelap */
+    color: #E0E0E0 !important;             /* Teks Terang */
+    border-color: #444 !important;
+}
+
+/* 4. Label Kecil (DESKRIPSI, LAMPIRAN FOTO) */
+[data-theme="dark"] .modal-box label {
+    color: #9CA3AF !important; /* Abu-abu kalem */
+}
+
+/* 5. Wadah Foto Lampiran */
+[data-theme="dark"] #detailImageContainer > div {
+    background-color: #2D2D2D !important;
+    border-color: #444 !important;
+    box-shadow: none !important;
+}
+
+/* 6. Garis Pembatas */
+[data-theme="dark"] hr {
+    border-color: #333 !important;
+}
+
+/* 7. Input Form Edit (Judul, Dropdown, dll di mode gelap) */
+[data-theme="dark"] #editModal .form-input {
+    background-color: #2D2D2D !important;
+    color: #FFF !important;
+    border-color: #444 !important;
+}
+
+/* --- FIX FINAL: HALAMAN BANTUAN & TEKS GELAP --- */
+
+/* 1. Ubah Kotak Besar "Tim Customer Support" jadi Gelap */
+[data-theme="dark"] .widget-card div[style*="background: #FAFAFA"] {
+    background-color: #1E1E1E !important; 
+    border-color: #333 !important;
+}
+
+/* 2. Ubah Dua Kartu Tombol (Laporkan & Pernyataan) jadi Gelap */
+[data-theme="dark"] .widget-card div[style*="background: white"] {
+    background-color: #2D2D2D !important; /* Warna sedikit lebih terang biar kontras */
+    border-color: #444 !important;
+    box-shadow: none !important;
+}
+
+/* 3. Pastikan Judul Tombol (h4) jadi Putih */
+[data-theme="dark"] .widget-card h4 {
+    color: #FFFFFF !important;
+}
+
+/* 4. Link "Kembali" jadi Putih */
+[data-theme="dark"] a[href="/dashboard"][data-link] {
+    color: #E0E0E0 !important;
+}
+
+/* 5. Ikon Bulat (! dan Pensil) di Bantuan */
+[data-theme="dark"] .widget-card div[style*="border: 2px solid #D1D5DB"] {
+    border-color: #555 !important;
+    color: #A18D6D !important; /* Tetap Emas */
+}
+
+/* 6. Fix Hover Effect pada Tombol Bantuan */
+[data-theme="dark"] .widget-card div[style*="background: white"]:hover {
+    border-color: #A18D6D !important; /* Border Emas saat di-hover */
+}
+
+/* 7. Pastikan semua teks paragraf (p) di dalam kartu terlihat */
+[data-theme="dark"] .widget-card p {
+    color: #B0B0B0 !important;
+}
+
+/* --- FIX LABEL STATUS CHART DI DARK MODE --- */
+
+/* 1. Target teks label di bawah Donut Chart */
+[data-theme="dark"] .widget-card div[style*="text-align: center"] p,
+[data-theme="dark"] .widget-card div[style*="text-align: center"] span,
+[data-theme="dark"] .widget-card div[style*="text-align: center"] small {
+    color: #E0E0E0 !important; /* Jadi Putih Terang */
+}
+
+/* 2. Pastikan titik warna (●) tetap berwarna (tidak ikut putih) */
+[data-theme="dark"] .widget-card span[style*="color:"] {
+    /* Gunakan filter brightness agar warna asli (hijau/merah) lebih menyala di background gelap */
+    filter: brightness(1.5); 
+}
+
+/* 3. Alternatif: Jika titik dan teks menyatu dalam satu elemen */
+[data-theme="dark"] .widget-card div[style*="text-align: center"] {
+    color: #E0E0E0 !important;
+}
+
+[data-theme="dark"] .chart-label { color: #E0E0E0 !important; }
+
+/* --- CALENDAR STYLE --- */
+.calendar-container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+.calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; text-align: center; }
+.day-name { font-weight: bold; color: #888; margin-bottom: 10px; }
+.calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+.calendar-day { 
+    height: 100px; border: 1px solid #eee; border-radius: 10px; padding: 10px; 
+    position: relative; cursor: pointer; transition: 0.2s;
+}
+.calendar-day:hover { background: #f9f9f9; }
+.calendar-day.today { background: #E3F2FD; border-color: #2196F3; color: #2196F3; font-weight: bold; }
+.task-dot {
+    height: 8px; width: 8px; border-radius: 50%; display: inline-block; margin: 2px;
+}

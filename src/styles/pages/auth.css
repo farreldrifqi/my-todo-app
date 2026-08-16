@@ -1,0 +1,99 @@
+/* auth.css - Khusus Layout Login & Register */
+
+.auth-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--spacing-md);
+    
+    /* --- TAMBAHAN BACKGROUND --- */
+    background-color: var(--color-primary); /* Warna dasar biru (backup kalau gambar gagal load) */
+    
+    background-image: url('../../../public/images/auth-pattern.png'); 
+    
+    /* Agar pola berulang (tiled) memenuhi layar */
+    background-repeat: repeat;
+    
+    /* Opsional: Agar pola menyatu dengan warna biru dasar (Blend Mode) */
+    /* Ini membuat pola abu-abu tadi jadi terlihat samar-samar biru */
+    background-blend-mode: overlay; 
+    background-size: 400px; /* Atur ukuran pola biar ga kekecilan/kebesaran */
+}
+
+.auth-card {
+    background-color: var(--color-bg-card);
+    border-radius: var(--border-radius-card);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* Shadow lebih halus */
+    display: flex;
+    width: 100%;
+    max-width: 960px; /* Lebar maksimal agar tidak terlalu lebar di layar besar */
+    overflow: hidden;
+}
+
+/* Area Ilustrasi (Kiri/Kanan) */
+.auth-card__illustration {
+    flex: 4; /* Lebar 40% */
+    background-color: var(--color-accent); /* Warna Accent (#D6F4ED) */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-md);
+}
+
+.auth-card__illustration img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.08));
+}
+
+/* Area Form Input */
+.auth-card__content {
+    flex: 5; /* Lebar 60% */
+    padding: 48px; /* Padding luas biar lega */
+}
+
+.auth-title {
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-lg);
+}
+
+.auth-footer-link {
+    text-align: center;
+    margin-top: var(--spacing-md);
+}
+
+.link-text {
+    color: var(--color-text-main);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.link-text:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .auth-card {
+        flex-direction: column; /* Tumpuk ke bawah */
+        max-width: 400px;
+    }
+
+    /* Khusus halaman Login, balik urutan agar gambar tetap di atas (opsional) */
+    /* .auth-card.login-mode { flex-direction: column-reverse; } */
+
+    .auth-card__illustration {
+        padding: 30px;
+        min-height: 200px;
+    }
+    
+    .auth-card__illustration img {
+        max-height: 180px;
+    }
+
+    .auth-card__content {
+        padding: 30px 24px;
+    }
+}

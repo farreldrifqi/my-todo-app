@@ -1,0 +1,149 @@
+/* main.css - GLOBAL STYLES & VARIABLES */
+
+:root {
+    /* --- 1. COLOR PALETTE (Sesuai Style Guide Figma) --- */
+    --color-primary: #53629E;
+    --color-secondary: #A18D6D;
+    --color-accent: #D6F4ED;
+    --color-text-main: #1E1E1E;
+    --color-danger: #C93535;
+
+    /* Warna UI Tambahan */
+    --color-bg-main: #F5F7FA; /* Background Biru Gelap Utama */
+    --color-bg-card: #FFFFFF;
+    --color-border-input: #CCCCCC;
+    --color-placeholder: #A0A0A0;
+    
+    /* --- 2. TYPOGRAPHY (Font: Inter) --- */
+    --font-family-base: 'Inter', sans-serif;
+
+    /* Font Sizes (Sesuai Style Guide) */
+    --fs-h1: 32px;
+    --fs-h2: 28px;
+    --fs-h3: 24px;
+    --fs-h4: 18px;
+    --fs-p1: 16px;
+    --fs-p2: 14px;
+
+    /* --- 3. SPACING & SHAPE --- */
+    --border-radius-card: 16px;
+    --border-radius-input: 8px; /* Rounded Style */
+    
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+}
+
+/* --- RESET & BASE STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-base);
+    color: var(--color-text-main);
+    background-color: var(--color-bg-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased; /* Font lebih tajam */
+    min-height: 100vh;
+}
+
+/* --- TYPOGRAPHY UTILS --- */
+h1 { font-size: var(--fs-h1); font-weight: 700; line-height: 1.2; }
+h2 { font-size: var(--fs-h2); font-weight: 700; }
+h3 { font-size: var(--fs-h3); font-weight: 600; }
+h4 { font-size: var(--fs-h4); font-weight: 600; }
+p  { font-size: var(--fs-p1); margin-bottom: 1rem; }
+small { font-size: var(--fs-p2); }
+
+/* --- REUSABLE COMPONENTS --- */
+
+/* 1. Form Elements */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-label {
+    display: block;
+    font-size: var(--fs-p2); /* 14px */
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-main);
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px var(--spacing-sm);
+    font-family: var(--font-family-base);
+    font-size: var(--fs-p2);
+    color: var(--color-text-main);
+    background-color: #fff;
+    
+    border: 1px solid var(--color-border-input);
+    border-radius: var(--border-radius-input);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.form-input::placeholder {
+    color: var(--color-placeholder);
+}
+
+.form-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(83, 98, 158, 0.2); /* Glow effect */
+}
+
+/* 2. Button Styles */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px var(--spacing-md);
+    
+    font-family: var(--font-family-base);
+    font-weight: 600;
+    font-size: var(--fs-p2);
+    
+    border-radius: var(--border-radius-input);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.1s;
+    border: none;
+    line-height: 1;
+}
+
+.btn:active {
+    transform: scale(0.98); /* Efek pencet */
+}
+
+.btn--full { width: 100%; margin-bottom: var(--spacing-sm); }
+
+.btn--primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn--primary:hover {
+    background-color: #424f80; /* Versi sedikit lebih gelap */
+}
+
+.btn--outline {
+    background-color: transparent;
+    border: 1px solid var(--color-text-main);
+    color: var(--color-text-main);
+}
+
+.btn--outline:hover {
+    background-color: #f5f5f5;
+}
+
+/* 3. Link Styles */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    cursor: pointer;
+}
